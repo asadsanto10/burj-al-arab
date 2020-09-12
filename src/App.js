@@ -10,8 +10,14 @@ import Login from './components/Login/Login';
 import Book from './components/Book/Book';
 import Header from './components/Header/Header';
 
+// create cintex
+export const userContext = createContext();
+
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
+    <userContext.Provider value={[loggedInUser, setLoggedInUser]}>
+      <h3>name {loggedInUser.name}</h3>
       <Router>
           <Header/>
           <Switch>
@@ -29,6 +35,7 @@ function App() {
             </Route>
           </Switch>
       </Router>
+    </userContext.Provider>
   );
 }
 
